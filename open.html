@@ -11,10 +11,19 @@
                 transform: translateY(0);
             }
             50% {
-                transform: translateY(-50px);
+                transform: translateY(-10px);
             }
             100% {
                 transform: translateY(0);
+            }
+        }
+
+        @keyframes riseUp {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-150px);
             }
         }
 
@@ -70,7 +79,17 @@
             left: -245px;
             right: 0;
             margin: 0 auto;
-            animation: bounce 3s infinite;
+            animation: bounce 1s infinite;
+            transition: transform 3s ease-in-out;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 24px;
+            font-family: "Georgia", serif;
+            font-weight: bold;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
         }
 
         .leftCover {
@@ -97,12 +116,21 @@
         <div class="letter">
             <div class="upsideDownTriangle">
                 <div class="triangle">
-                    <div class="paper" id="paper"></div>
+                    <div class="paper" id="paper"><p>Do you like men?</p></div>
                 </div>
             </div>
             <div class="leftCover"></div>
             <div class="rightCover"></div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener("click", function() {
+            let paper = document.getElementById("paper");
+            paper.style.animation = "none"; // Stop bounce animation
+            paper.style.transform = "translateY(-150px)"; // Apply riseUp effect
+        });
+    </script>
+
 </body>
 </html>
