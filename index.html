@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closed</title>
+
+    <style>
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        body {
+            background-color: aquamarine;
+        }
+
+        .letter {
+            width: 500px;
+            height: 250px;
+            background-color: bisque;
+            position: relative;
+        }
+
+        
+        .upsideDownTriangle {
+            width: 0;
+            height: 0;
+            border-left: 250px solid transparent;
+            border-right: 250px solid transparent;
+            border-top: 125px solid black;
+            position: relative;
+        }
+
+        .innerTriangle {
+            width: 0;
+            height: 0;
+            border-left: 247px solid transparent;
+            border-right: 247px solid transparent;
+            border-top: 123px solid bisque;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+        }
+
+        .topLine {
+            width: 98.5%;
+            height: 1px;
+            background-color: black;
+            position: absolute;
+            top: 0;
+            left: 1px;
+            right: 0;
+            margin: 0 auto;
+        }
+
+    </style>
+</head>
+<body>
+    <div class = "center">
+        <a href="open.html">
+            <div class = "letter">
+                <div class = "upsideDownTriangle"></div>
+                <div class = "innerTriangle"></div>
+                <div class = "topLine"></div>
+            </div>
+        </a>
+    </div>
+</body>
+</html>
