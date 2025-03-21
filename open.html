@@ -107,6 +107,10 @@
             border-bottom: 250px solid bisque;
             position: absolute;
         }
+
+        .hidden {
+            display: none;
+        }
        
     </style>
 </head>
@@ -116,7 +120,7 @@
         <div class="letter">
             <div class="upsideDownTriangle">
                 <div class="triangle">
-                    <div class="paper" id="paper"><p>Do you like men?</p></div>
+                    <div class="paper" id="paper"><p class = "hidden" id = "card">Prom?</p></div>
                 </div>
             </div>
             <div class="leftCover"></div>
@@ -125,10 +129,19 @@
     </div>
 
     <script>
+        let clicked = false;
+
         document.addEventListener("click", function() {
-            let paper = document.getElementById("paper");
-            paper.style.animation = "none"; // Stop bounce animation
-            paper.style.transform = "translateY(-150px)"; // Apply riseUp effect
+            if (!clicked){
+                let card = document.getElementById("card");
+                card.classList.toggle("hidden");
+
+
+                let paper = document.getElementById("paper");
+                paper.style.animation = "riseUp 1s ease-in-out forwards";
+
+                clicked = true;
+            }
         });
     </script>
 
