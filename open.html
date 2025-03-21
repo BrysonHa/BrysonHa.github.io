@@ -6,6 +6,18 @@
     <title>Open</title>
 
     <style>
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-50px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
         .center {
             display: flex;
             justify-content: center;
@@ -53,14 +65,11 @@
             width: 490px;
             height: 240px;
             background-color: whitesmoke;
-            position: absolute;
+            position: relative;
             top: 130px;
             left: -245px;
             right: 0;
             margin: 0 auto;
-        }
-
-        .paper:hover {
             animation: bounce 3s infinite;
         }
 
@@ -79,41 +88,7 @@
             border-bottom: 250px solid bisque;
             position: absolute;
         }
-
-        
-        .paperUp {
-            animation: paperUp 1s forwards;
-            position: absolute;
-            top: 250px;
-            left: 0;
-            right: 0;
-            margin: 0 auto;
-        }
-
-        @keyframes bounce {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-50px);
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes paperUp {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-250px);
-            }
-            100% {
-                transform: translateY(-250px);
-            }
-        }
-
+       
     </style>
 </head>
 <body>
@@ -129,18 +104,5 @@
             <div class="rightCover"></div>
         </div>
     </div>
-
-    <script>
-        const paper = document.getElementById('paper');
-
-        document.addEventListener('click', function() {
-            
-            paper.classList.add('paperUp');
-
-            paper.addEventListener('animationend', function() {
-                paper.classList.remove('paperUp');
-            });
-        });
-    </script>
 </body>
 </html>
