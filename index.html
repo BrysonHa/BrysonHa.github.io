@@ -3,9 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Closed</title>
+    <title>Open</title>
 
     <style>
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes riseUp {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-150px);
+            }
+        }
+
         .center {
             display: flex;
             justify-content: center;
@@ -16,61 +37,176 @@
 
         body {
             background-color: aquamarine;
+            margin: 0;
+            padding: 0;
         }
 
-        .letter {
+        .envelope {
             width: 500px;
             height: 250px;
-            background-color: bisque;
-            position: relative;
+            background-color: black;
+            position: absolute;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+
+            z-index: 0;
         }
 
-        
-        .upsideDownTriangle {
+        .leftCover {
+            width: 0;
+            height: 0;
+            border-right: 500px solid transparent;
+            border-bottom: 250px solid bisque;
+            position: absolute;
+
+            top: 0px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            transform-origin: top center;
+
+            z-index: 3;
+        }
+
+        .rightCover {
+            width: 0;
+            height: 0;
+            border-left: 500px solid transparent;
+            border-bottom: 250px solid bisque;
+            position: absolute;
+
+            top: 0px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            transform-origin: top center;
+
+            z-index: 3;
+        }
+
+        @keyframes flipSeal {
+            0% {
+                transform: scaleY(1);
+            }
+            100% {
+                transform: scaleY(-1);
+            }
+        }
+
+        .seal {
             width: 0;
             height: 0;
             border-left: 250px solid transparent;
             border-right: 250px solid transparent;
-            border-top: 125px solid black;
-            position: relative;
+            border-top: 125px solid bisque;
+            position: absolute;
+
+            top: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            transform-origin: top center;
+
+            z-index: 1;
         }
 
-        .innerTriangle {
-            width: 0;
-            height: 0;
-            border-left: 247px solid transparent;
-            border-right: 247px solid transparent;
-            border-top: 123px solid bisque;
-            position: absolute;
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes moveUp {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-150px);
+            }
+        }
+
+        .paper {
+            width: 490px;
+            height: 240px;
+            background-color: whitesmoke;
+            position: relative;
             top: 0;
             left: 0;
             right: 0;
             margin: 0 auto;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 24px;
+            font-family: "Georgia", serif;
+            font-weight: bold;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+
+            opacity: 0;
+
+            z-index: 2;
         }
 
-        .topLine {
-            width: 98.5%;
-            height: 1px;
-            background-color: black;
-            position: absolute;
-            top: 0;
-            left: 1px;
-            right: 0;
-            margin: 0 auto;
+        .hidden {
+            display: none;
         }
-
+       
     </style>
 </head>
 <body>
     <div class = "center">
-        <a href="open.html">
-            <div class = "letter">
-                <div class = "upsideDownTriangle"></div>
-                <div class = "innerTriangle"></div>
-                <div class = "topLine"></div>
+        <div class = "envelope">
+            <div class = "paper">
+                <p class = "hidden">Prom?</p>
             </div>
-        </a>
+
+            <div class = "leftCover"></div>
+            <div class = "rightCover"></div>
+
+            <div class = "seal"></div>
+        </div>
     </div>
+
+    <script>
+        let cnt = 0;
+
+        let seal = document.getElementsByClassName("seal")[0].style;
+        let paper = document.getElementsByClassName("paper")[0].style;
+
+        document.addEventListener("click", function() {
+            if (cnt == 0){
+                cnt++;
+
+                seal.animation = "flipSeal 1s ease-in-out forwards";
+                paper.animation = "fadeIn 1.5s ease-in-out forwards";
+
+                setTimeout(function () {
+                    paper.opacity = 1;
+                    paper.animation = "bounce 1s infinite"
+                }, 1500)
+            } else if (cnt == 1){
+                cnt++;
+
+                paper.animation = "moveUp 2s ease forwards";
+                document.getElementsByClassName("hidden")[0].classList.toggle("hidden");
+            }
+        });
+    </script>
 </body>
 </html>
