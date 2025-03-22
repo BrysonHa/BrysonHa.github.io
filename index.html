@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Envelope</title>
+    <title>Open</title>
 
     <style>
         .center {
@@ -145,20 +145,26 @@
         .hidden {
             display: none;
         }
-       
+
+        /* Add media query to handle smaller screens */
+        @media only screen and (max-width: 500px) {
+            .center {
+                overflow: hidden;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class = "center">
-        <div class = "envelope">
-            <div class = "paper">
-                <p class = "hidden">Zoey, will you go to prom with me?</p>
+    <div class="center">
+        <div class="envelope">
+            <div class="paper">
+                <p class="hidden">Zoey, will you go to prom with me?</p>
             </div>
 
-            <div class = "leftCover"></div>
-            <div class = "rightCover"></div>
+            <div class="leftCover"></div>
+            <div class="rightCover"></div>
 
-            <div class = "seal"></div>
+            <div class="seal"></div>
         </div>
     </div>
 
